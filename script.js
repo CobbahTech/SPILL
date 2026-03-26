@@ -61,7 +61,7 @@ function createPost(user, content) {
             <strong>${user}</strong>
         </div>
         <div class="post-content">${content}</div>
-pwp        <div class="post-actions">
+        <div class="post-actions">
             <button>🔥</button>
             <button>💬</button>
             <button>❤️</button>
