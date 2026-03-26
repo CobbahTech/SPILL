@@ -76,7 +76,7 @@ createPost("BlueRocket12", "I saw... <img src='images/19.jpeg' width='100%'>");
 createPost("SilentPenguin42", "Fuck this, heeeheee");
 createPost("CrazyTiger56", "Cool shades tho <img src='images/13.jpg' width='100%'>");
 createPost("BlueRocket12", "Dayummm 😂 <img src='images/22.jpeg' width='100%'>");
-createPost("BlueRocket12", "gitI conquered... <img src='images/20.jpeg' width='100%'>");
+createPost("BlueRocket12", "I conquered... <img src='images/20.jpeg' width='100%'>");
 createPost("HappyBanana99", "Rare video of ee err girl <video width='100%' controls><source src='images/v3.mp4' type='video/mp4'></video>");
 createPost("BlueRocket12", "For sale, contact me on your ass 😂 <img src='images/18.webp' width='100%'>");
 createPost("ElectricWizard77", "I just want to advice you sickos, Always stay positive and also IDGAF");
