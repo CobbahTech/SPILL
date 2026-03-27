@@ -40,11 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // DATA
   // =========================
   const avatars = [
-    'images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg',
-    'images/5.jpg','images/6.jpg','images/7.jpg','images/8.jpg',
-    'images/9.jpg','images/10.webp','images/11.webp','images/12.jpg',
-    'images/13.jpg','images/14.jpg','images/15.jpg','images/16.jpg',
-    'images/17.jpg','images/18.webp'
+    'images/1.jpg', 'images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg',
+    'images/6.jpg','images/6.webp', 'images/7.webp','images/8.webp','images/11.jpg',
+    
+    
   ];
 
 
@@ -149,20 +148,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // DEMO POSTS
   // =========================
   const demoPosts = [
-    ["BlueRocket12", "I came... <img src='images/21.jpeg' width='100%'>"],
+    ["BlueRocket12", "I came... <img src='images/3.jpg' width='100%'>"],
     ["BlueRocket12", "I saw... <img src='images/19.jpeg' width='100%'>"],
     ["SilentPenguin42", "Fuck this, heeeheee"],
     ["CrazyTiger56", "Cool shades tho <img src='images/13.jpg' width='100%'>"],
     ["BlueRocket12", "Dayummm 😂 <img src='images/22.jpeg' width='100%'>"],
-    ["BlueRocket12", "I conquered... <img src='images/20.jpeg' width='100%'>"],
-    ["HappyBanana99", "Rare video <video width='100%' controls><source src='images/v3.mp4' type='video/mp4'></video>"],
-    ["ElectricWizard77", "Stay positive"],
-    ["HappyBanana99", "Must see 😂 <video width='100%' controls><source src='images/v1.mp4' type='video/mp4'></video>"],
-    ["ElectricWizard77", "Im boredddd ahhh"],
-    ["HappyBanana99", "Warning ⚠️ <video width='100%' controls><source src='images/v2.mp4' type='video/mp4'></video>"],
+    ["BlueRocket12", "I cleaned em all... <img src='images/12.jpg' width='100%'>"],
+    ["HappyBanana99", "When your headache starts attacking your eye so youre stood up like the Uchihas <video width='100%' controls><source src='images/head.mp4' type='video/mp4'></video>"],
+    ["ElectricWizard77", "Where dey Aunty Shakira now err "],
+    ["HappyBanana99", "Hacker d'Uchiha <video width='100%' controls><source src='images/obito.mp4' type='video/mp4'></video>"],
+    ["ElectricWizard77", "Im boredddd ahhh who wants to play UNO with me "],
+    ["HappyBanana99", "Island boyyyy <video width='100%' controls><source src='images/v2.mp4' type='video/mp4'></video>"],
     ["CrazyTiger56", "Purplee <img src='images/jjk-meme.jpeg' width='100%'>"],
-    ["HappyBanana99", "Goat?! <video width='100%' controls><source src='images/v4.mp4' type='video/mp4'></video>"],
-    ["BlueRocket12", "For sale 😂 <img src='images/18.webp' width='100%'>"],
+    ["HappyBanana99", "Goat?! <video width='100%' controls><source src='images/naruto.mp4' type='video/mp4'></video>"],
+    ["BlueRocket12", "Faaaaaah😂 <img src='images/10.jpeg' width='100%'>"],
     ["ElectricWizard77", "OOGAH BOOGAH"]
   ];
 

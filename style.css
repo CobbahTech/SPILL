@@ -48,6 +48,8 @@ body {
   background: #04da28ee;
   border: 3px color(srgb red green blue) #b3d0e985;
   border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
   color: #aa0658;
 }
 
