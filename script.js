@@ -148,10 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // DEMO POSTS
   // =========================
   const demoPosts = [
-    ["BlueRocket12", "I came... <img src='images/3.jpg' width='100%'>"],
-    ["BlueRocket12", "I saw... <img src='images/19.jpeg' width='100%'>"],
-    ["SilentPenguin42", "Fuck this, heeeheee"],
-    ["CrazyTiger56", "Cool shades tho <img src='images/13.jpg' width='100%'>"],
+    ["BlueRocket12", "I'm saying Subaru should just forget about sorry ahh emilia and go for rem ❤️❤️💕💕<img src='images/rem.jpeg' width='100%'>"],
+    ["BlueRocket12", "I saw... <img src='images/nooooo.jpeg' width='100%'>"],
+    ["SilentPenguin42", "Fuck this, heeeheee suck ma dihhhh"],
+    ["CrazyTiger56", "Mr. World Wide <img src='images/queen.jpeg' width='100%'>"],
     ["BlueRocket12", "Dayummm 💕<img src='images/emilia.jpeg' width='100%'>"],
     ["BlueRocket12", "I cleaned em all... <img src='images/12.jpg' width='100%'>"],
     ["HappyBanana99", "When your headache starts attacking your eye so youre stood up like the Uchihas <video width='100%' controls><source src='images/head.mp4' type='video/mp4'></video>"],
