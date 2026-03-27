@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ["BlueRocket12", "I saw... <img src='images/19.jpeg' width='100%'>"],
     ["SilentPenguin42", "Fuck this, heeeheee"],
     ["CrazyTiger56", "Cool shades tho <img src='images/13.jpg' width='100%'>"],
-    ["BlueRocket12", "Dayummm 😂 <img src='images/22.jpeg' width='100%'>"],
+    ["BlueRocket12", "Dayummm❤️❤️❤️  <img src='images/emilia.jpeg' width='100%'>"],
     ["BlueRocket12", "I cleaned em all... <img src='images/12.jpg' width='100%'>"],
     ["HappyBanana99", "When your headache starts attacking your eye so youre stood up like the Uchihas <video width='100%' controls><source src='images/head.mp4' type='video/mp4'></video>"],
     ["ElectricWizard77", "Where dey Aunty Shakira now err "],
