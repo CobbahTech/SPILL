@@ -67,9 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="post-content">${content}</div>
       <div class="post-actions">
-        <button>🔥</button>
-        <button>💬</button>
-        <button>❤️</button>
+      <button>❤️ 4.5K</button>
+      <button>💬 2.4K</button>
+      <button>❌ Unspills in 48hrs</button>
       </div>
     `;
 
@@ -191,3 +191,65 @@ document.addEventListener("keydown", (e) => {
     modal.classList.remove("active");
   }
 });
+
+const postBtn = document.getElementById("post-btn");
+const textInput = document.getElementById("spill-text");
+const mediaInput = document.getElementById("media-input");
+const feed = document.getElementById("feed");
+
+postBtn.addEventListener("click", () => {
+  const text = textInput.value.trim();
+  const file = mediaInput.files[0];
+
+  // prevent empty post
+  if (!text && !file) return;
+
+  createPost(text, file);
+
+  // reset inputs
+  textInput.value = "";
+  mediaInput.value = "";
+
+  // close modal
+  modal.classList.remove("active");
+});
+
+function createPost(text, file) {
+  const post = document.createElement("div");
+  post.classList.add("post");
+
+  let mediaHTML = "";
+
+  if (file) {
+    const fileURL = URL.createObjectURL(file);
+
+    if (file.type.startsWith("image")) {
+      mediaHTML = `<img src="${fileURL}" width="100%">`;
+    } else if (file.type.startsWith("video")) {
+      mediaHTML = `<video src="${fileURL}" controls width="100%"></video>`;
+    }
+  }
+
+  post.innerHTML = `
+    <div class="post-header">
+      <strong>${username.textContent || "User"}</strong>
+    </div>
+
+    <div class="post-content">
+      <p>${text}</p>
+      ${mediaHTML}
+    </div>
+
+    <div class="post-actions">
+      <button>❤️ 4.5K</button>
+      <button>💬 2.4K</button>
+      <button>❌ Unspills in 48hrs</button>
+    </div>
+  `;
+
+  // add new post to top
+  feed.prepend(post);
+}
+
+const username = document.getElementById("username");
+username.textContent = "CobbahTech"; // or dynamic later
