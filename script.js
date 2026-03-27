@@ -1,104 +1,171 @@
-// Ensure this runs only on spill.html
-if (document.body) document.body.classList.add('spill-page');
+document.addEventListener("DOMContentLoaded", () => {
 
-const adjectives = ["Silent","Crazy","Happy","Blue","Electric"];
-const nouns = ["Penguin","Tiger","Banana","Rocket","Wizard"];
+  // =========================
+  // USERNAME SETUP
+  // =========================
+  const adjectives = ["Silent","Crazy","Happy","Blue","Electric"];
+  const nouns = ["Penguin","Tiger","Banana","Rocket","Wizard"];
 
-// Get username from localStorage or create new
-let username = localStorage.getItem("spillUsername");
-if (!username) {
+  let username = localStorage.getItem("spillUsername");
+
+  if (!username) {
     const randomNumber = Math.floor(Math.random() * 100);
-    username = adjectives[Math.floor(Math.random() * adjectives.length)] + 
-               nouns[Math.floor(Math.random() * nouns.length)] +
-               randomNumber;
+    username =
+      adjectives[Math.floor(Math.random() * adjectives.length)] +
+      nouns[Math.floor(Math.random() * nouns.length)] +
+      randomNumber;
+
     localStorage.setItem("spillUsername", username);
-}
+  }
 
-// Set username in header
-const usernameElem = document.getElementById("username");
-if (usernameElem) usernameElem.textContent = username;
+  const usernameElem = document.getElementById("username");
+  if (usernameElem) usernameElem.textContent = username;
 
-// Get feed container
-const feed = document.getElementById("feed");
 
-// Example avatars
-const avatars = [
-  'images/1.jpg',
-  'images/2.jpg',
-  'images/3.jpg',
-  `images/4.jpg`,
-  'images/5.jpg',
-  'images/6.jpg',
-  'images/7.jpg',
-  'images/8.jpg',
-  'images/9.jpg',
-  'images/10.webp',
-  'images/11.webp',
-  'images/12.jpg',
-  'images/13.jpg',
-  'images/14.jpg',
-  'images/15.jpg',
-  'images/16.jpg',
-  'images/17.jpg',
-  'images/18.webp',
+  // =========================
+  // DOM ELEMENTS
+  // =========================
+  const feed = document.getElementById("feed");
 
-];
+  const spillBtn = document.getElementById("spill-button");
+  const modal = document.getElementById("spill-modal");
+  const closeBtn = document.getElementById("close-btn");
 
-// Function to get random avatar
-function randomAvatar() {
+  const postBtn = document.getElementById("post-btn");
+  const textInput = document.getElementById("spill-text");
+  const mediaInput = document.getElementById("media-input");
+
+
+  // =========================
+  // DATA
+  // =========================
+  const avatars = [
+    'images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg',
+    'images/5.jpg','images/6.jpg','images/7.jpg','images/8.jpg',
+    'images/9.jpg','images/10.webp','images/11.webp','images/12.jpg',
+    'images/13.jpg','images/14.jpg','images/15.jpg','images/16.jpg',
+    'images/17.jpg','images/18.webp'
+  ];
+
+
+  // =========================
+  // FUNCTIONS
+  // =========================
+  function randomAvatar() {
     return avatars[Math.floor(Math.random() * avatars.length)];
-}
+  }
 
-// Function to create a post with avatar
-function createPost(user, content) {
+  function createPost(user, content) {
     if (!feed) return;
+
     const post = document.createElement("div");
     post.className = "post";
 
     post.innerHTML = `
-        <div class="post-header">
-            <img src="${randomAvatar()}" alt="avatar" style="width:30px; height:30px; border-radius:50%; margin-right:8px; vertical-align:middle;">
-            <strong>${user}</strong>
-        </div>
-        <div class="post-content">${content}</div>
-        <div class="post-actions">
-            <button>🔥</button>
-            <button>💬</button>
-            <button>❤️</button>
-        </div>
+      <div class="post-header">
+        <img src="${randomAvatar()}" style="width:30px;height:30px;border-radius:50%;margin-right:8px;">
+        <strong>${user}</strong>
+      </div>
+      <div class="post-content">${content}</div>
+      <div class="post-actions">
+        <button>🔥</button>
+        <button>💬</button>
+        <button>❤️</button>
+      </div>
     `;
-    feed.appendChild(post);
-}
 
-// Example posts
-createPost("BlueRocket12", "I came... <img src='images/21.jpeg' width='100%'>");
-createPost("BlueRocket12", "I saw... <img src='images/19.jpeg' width='100%'>");
-createPost("SilentPenguin42", "Fuck this, heeeheee");
-createPost("CrazyTiger56", "Cool shades tho <img src='images/13.jpg' width='100%'>");
-createPost("BlueRocket12", "Dayummm 😂 <img src='images/22.jpeg' width='100%'>");
-createPost("BlueRocket12", "I conquered... <img src='images/20.jpeg' width='100%'>");
-createPost("HappyBanana99", "Rare video of ee err girl <video width='100%' controls><source src='images/v3.mp4' type='video/mp4'></video>");
-createPost("BlueRocket12", "For sale, contact me on your ass 😂 <img src='images/18.webp' width='100%'>");
-createPost("ElectricWizard77", "I just want to advice you sickos, Always stay positive and also IDGAF");
-createPost("HappyBanana99", "Must see 😂 <video width='100%' controls><source src='images/v1.mp4' type='video/mp4'></video>");
-createPost("ElectricWizard77", "Im boredddd ahhh");
-createPost("HappyBanana99", "Pls don't watch, dont say i didnt warn ya <video width='100%' controls><source src='images/v2.mp4' type='video/mp4'></video>");
-createPost("CrazyTiger56", "Purplee <img src='images/jjk-meme.jpeg' width='100%'>");
-createPost("HappyBanana99", "Goat, Chriastianoooo is this tuff?! <video width='100%' controls><source src='images/v4.mp4' type='video/mp4'></video>");
-createPost("ElectricWizard77", "OOGAH BOOGAH");
-createPost("SilentPenguin42", "Bankai Haka No Togame ");
-createPost("BlueRocket12", "Beautiful or not? <img src='images/6.jpg' width='100%'>");
-createPost("SilentPenguin42", "Is chuck Norris still alive? ");
-createPost("CrazyTiger56", "Another cheers for myself <img src='images/3.jpg' width='100%'>");
-createPost("SilentPenguin42", "Death note or Chainsaw man?");
-createPost("HappyBanana99", "Best anime ever naruto <video width='100%' controls><source src='images/naruto.mp4' type='video/mp4'></video>");
-createPost("SilentPenguin42", "I heard there's season 2 of Class room of the elite, is it true?  ");
-createPost("BlueRocket12", "Look at this funny pic! <img src='images/funnyguy.jpeg' width='100%'>");
-createPost("ElectricWizard77", "Where's my mom??");
-createPost("HappyBanana99", "Rare video of someone oo 😂 <video width='100%' controls><source src='images/Mee.mp4' type='video/mp4'></video>");
-createPost("BlueRocket12", "Fr this time, stupid hat for sale <img src='images/11.webp' width='100%'>");
-createPost("SilentPenguin42", "You know what, I just want to say, I love this community, so im lwkyenuinly giving this out for fckn free <img src='images/9.jpg' width='100%'>");
-createPost("HappyBanana99", "Wholesome team frr <video width='100%' controls><source src='images/v5.mp4' type='video/mp4'></video>");
-createPost("ElectricWizard77", "Who knows how to rap whiles eating tuna flakes....");
-createPost("HappyBanana99", "Hacker d'Uchiha <video width='100%' controls><source src='images/obito.mp4' type='video/mp4'></video>");
+    // Show newest at top
+    feed.prepend(post);
+  }
 
+
+  // =========================
+  // MODAL LOGIC
+  // =========================
+  if (spillBtn && modal) {
+    spillBtn.addEventListener("click", () => {
+      modal.style.display = "block";
+    });
+  }
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  }
+
+  // Optional: click outside to close
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+
+  // =========================
+  // POST CREATION
+  // =========================
+  if (postBtn) {
+    postBtn.addEventListener("click", () => {
+      const text = textInput.value.trim();
+      const file = mediaInput.files[0];
+
+      let content = "";
+
+      // Add text
+      if (text) {
+        content += `<p>${text}</p>`;
+      }
+
+      // Add media
+      if (file) {
+        const fileURL = URL.createObjectURL(file);
+
+        if (file.type.startsWith("image")) {
+          content += `<img src="${fileURL}" width="100%">`;
+        } else if (file.type.startsWith("video")) {
+          content += `
+            <video width="100%" controls>
+              <source src="${fileURL}" type="${file.type}">
+            </video>
+          `;
+        }
+      }
+
+      // Prevent empty post
+      if (!content) return;
+
+      createPost(username, content);
+
+      // Reset inputs
+      textInput.value = "";
+      mediaInput.value = "";
+      modal.style.display = "none";
+    });
+  }
+
+
+  // =========================
+  // DEMO POSTS
+  // =========================
+  const demoPosts = [
+    ["BlueRocket12", "I came... <img src='images/21.jpeg' width='100%'>"],
+    ["BlueRocket12", "I saw... <img src='images/19.jpeg' width='100%'>"],
+    ["SilentPenguin42", "Fuck this, heeeheee"],
+    ["CrazyTiger56", "Cool shades tho <img src='images/13.jpg' width='100%'>"],
+    ["BlueRocket12", "Dayummm 😂 <img src='images/22.jpeg' width='100%'>"],
+    ["BlueRocket12", "I conquered... <img src='images/20.jpeg' width='100%'>"],
+    ["HappyBanana99", "Rare video <video width='100%' controls><source src='images/v3.mp4' type='video/mp4'></video>"],
+    ["BlueRocket12", "For sale 😂 <img src='images/18.webp' width='100%'>"],
+    ["ElectricWizard77", "Stay positive"],
+    ["HappyBanana99", "Must see 😂 <video width='100%' controls><source src='images/v1.mp4' type='video/mp4'></video>"],
+    ["ElectricWizard77", "Im boredddd ahhh"],
+    ["HappyBanana99", "Warning ⚠️ <video width='100%' controls><source src='images/v2.mp4' type='video/mp4'></video>"],
+    ["CrazyTiger56", "Purplee <img src='images/jjk-meme.jpeg' width='100%'>"],
+    ["HappyBanana99", "Goat?! <video width='100%' controls><source src='images/v4.mp4' type='video/mp4'></video>"],
+    ["ElectricWizard77", "OOGAH BOOGAH"]
+  ];
+
+  demoPosts.forEach(post => createPost(post[0], post[1]));
+
+});
