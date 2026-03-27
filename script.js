@@ -253,3 +253,16 @@ function createPost(text, file) {
 
 const username = document.getElementById("username");
 username.textContent = "CobbahTech"; // or dynamic later
+
+const intro = document.getElementById("intro-screen");
+const enterBtn = document.getElementById("enter-btn");
+const leaveBtn = document.getElementById("leave-btn");
+
+// ENTER → open app
+enterBtn.addEventListener("click", () => {
+  intro.classList.add("fade-out");
+
+  setTimeout(() => {
+    intro.style.display = "none";
+  }, 400);
+});
