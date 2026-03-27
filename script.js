@@ -167,3 +167,27 @@ document.addEventListener("DOMContentLoaded", () => {
   demoPosts.forEach(post => createPost(post[0], post[1]));
 
 });
+
+const modal = document.getElementById("spill-modal");
+const openBtn = document.getElementById("spill-button");
+const closeBtn = document.getElementById("close-btn");
+
+openBtn.addEventListener("click", () => {
+  modal.classList.add("active");
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove("active");
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("active");
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    modal.classList.remove("active");
+  }
+});
