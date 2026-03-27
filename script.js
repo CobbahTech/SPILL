@@ -156,13 +156,13 @@ document.addEventListener("DOMContentLoaded", () => {
     ["BlueRocket12", "Dayummm 😂 <img src='images/22.jpeg' width='100%'>"],
     ["BlueRocket12", "I conquered... <img src='images/20.jpeg' width='100%'>"],
     ["HappyBanana99", "Rare video <video width='100%' controls><source src='images/v3.mp4' type='video/mp4'></video>"],
-    ["BlueRocket12", "For sale 😂 <img src='images/18.webp' width='100%'>"],
     ["ElectricWizard77", "Stay positive"],
     ["HappyBanana99", "Must see 😂 <video width='100%' controls><source src='images/v1.mp4' type='video/mp4'></video>"],
     ["ElectricWizard77", "Im boredddd ahhh"],
     ["HappyBanana99", "Warning ⚠️ <video width='100%' controls><source src='images/v2.mp4' type='video/mp4'></video>"],
     ["CrazyTiger56", "Purplee <img src='images/jjk-meme.jpeg' width='100%'>"],
     ["HappyBanana99", "Goat?! <video width='100%' controls><source src='images/v4.mp4' type='video/mp4'></video>"],
+    ["BlueRocket12", "For sale 😂 <img src='images/18.webp' width='100%'>"],
     ["ElectricWizard77", "OOGAH BOOGAH"]
   ];
 
