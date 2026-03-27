@@ -145,8 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // =========================
-  // DEMO POSTS
-  // =========================
   const demoPosts = [
     ["BlueRocket12", "I'm saying Subaru should just forget about sorry ahh emilia and go for rem ❤️❤️💕💕<img src='images/rem.jpeg' width='100%'>"],
     ["BlueRocket12", "I saw... <img src='images/nooooo.jpeg' width='100%'>"],
