@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #f5f7fa;
+  background: #f0f2f5;
 }
 
 #user-avatar {
@@ -15,10 +15,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 12px 20px;
   background: #ffffff;
-  border-bottom: 2px solid #e0e0e0;
-} 
+  border-bottom: 1px solid #e6e6e6;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
 .avatar {
   display: flex;
@@ -27,10 +30,9 @@ body {
 }
 
 #username {
-  font-weight: bold;
-  font-size: 25px;
-  color: #1a1a1a;
-  border-color: transparent;
+  font-weight: 600;
+  font-size: 18px;
+  color: #0f1419;
 }
 
 .avatar img {
@@ -44,70 +46,85 @@ body {
   margin-left: 20px;
   padding: 10px;
   cursor: pointer;
-  background: #3fabd6;
+  background: #1d9bf0;
   border: none;
-  border-radius: 200px;
-  font-weight: bold;
-  font-size: 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 16px;
   color: #ffffff;
+  transition: all 0.2s ease;
 }
 
 #spill-button:hover {
-  background: #2d8fb5;
-  color: #ffffff;
+  background: #1a8cd8;
+  transform: scale(1.02);
 }
-
 .categories {
   display: flex;
   gap: 10px;
   padding: 10px 20px;
   overflow-x: auto;
   background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .categories button {
-  padding: 8px 16px;
+  padding: 6px 14px;
   border: none;
-  background: #e6f4fa;
+  background: #f0f2f5;
   cursor: pointer;
-  border-radius: 200px;
-  font-weight: bold;
-  color: #3fabd6;
+  border-radius: 999px;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.2s ease;
 }
 
-#categories button:hover {
-  background: #3fabd6;
+.categories button:hover {
+  background: #1d9bf0;
   color: #ffffff;
 }
 
+
 .feed {
   padding: 20px;
-  color: #1a1a1a;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .post {
-  background: #ffffff;  
+  background: #ffffff;
   padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 8px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  transition: all 0.2s ease;
+}
+
+.post:hover {
+  background: #fafafa;
 }
 
 .post-content {
   margin-bottom: 10px;
 }
 
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #0f1419;
+  font-weight: 600;
+}
+
 .post-actions {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
-  color: #666;
+  color: #536471;
 }
 
-.post-actions button {
-  background: none;
-  border: none;
-  cursor: pointer;
+.post-actions button:hover {
+  color: #1d9bf0;
 }
 
 .post img, .post video {
@@ -138,7 +155,7 @@ body {
   margin: 100px auto;
   width: 90%;
   max-width: 400px;
-  border-radius: 10px;
+  border-radius: 16px;
 }
 
 .modal textarea {
