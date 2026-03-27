@@ -2,8 +2,9 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #b3d0e985;
+  background: #f5f7fa;
 }
+
 #user-avatar {
   width: 40px;
   height: 40px;
@@ -15,10 +16,9 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background: #93d66ca2;
-  border-bottom: 5px solid #b3d0e985;
+  background: #ffffff;
+  border-bottom: 2px solid #e0e0e0;
 } 
-
 
 .avatar {
   display: flex;
@@ -29,9 +29,8 @@ body {
 #username {
   font-weight: bold;
   font-size: 25px;
-  color: #3fabd6;
-  border-color: #aa0658;
-
+  color: #1a1a1a;
+  border-color: transparent;
 }
 
 .avatar img {
@@ -44,19 +43,18 @@ body {
   flex: 1;
   margin-left: 20px;
   padding: 10px;
-  font-size: 16px;
   cursor: pointer;
   background: #3fabd6;
-  border: 3px solid #aa0658;
+  border: none;
   border-radius: 200px;
   font-weight: bold;
   font-size: 20px;
-  color: #aa0658;
+  color: #ffffff;
 }
 
 #spill-button:hover {
-  background: #04da28ee;
-  color: #aa0658;
+  background: #2d8fb5;
+  color: #ffffff;
 }
 
 .categories {
@@ -65,29 +63,27 @@ body {
   padding: 10px 20px;
   overflow-x: auto;
   background: #ffffff;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e0e0e0;
 }
+
 .categories button {
   padding: 8px 16px;
   border: none;
-  background: #3fabd6;
+  background: #e6f4fa;
   cursor: pointer;
-  border-radius: 20px;
-  font-weight: bold;
-  color: #d31111;
-  border: 3px solid #aa0658;
   border-radius: 200px;
-
+  font-weight: bold;
+  color: #3fabd6;
 }
 
 #categories button:hover {
-  background: #43db3e;
-  color: #fff;
+  background: #3fabd6;
+  color: #ffffff;
 }
 
 .feed {
   padding: 20px;
-  color: #333;
+  color: #1a1a1a;
 }
 
 .post {
@@ -105,7 +101,7 @@ body {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
-  color: #555;
+  color: #666;
 }
 
 .post-actions button {
@@ -113,14 +109,17 @@ body {
   border: none;
   cursor: pointer;
 }
+
 .post img, .post video {
   border-radius: 8px;
   margin-top: 10px;
 }
+
 .post-header {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  color: #3fabd6;
 }
 
 .modal {
@@ -134,7 +133,7 @@ body {
 }
 
 .modal-content {
-  background: #fff;
+  background: #ffffff;
   padding: 20px;
   margin: 100px auto;
   width: 90%;
