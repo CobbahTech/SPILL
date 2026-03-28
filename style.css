@@ -1,3 +1,6 @@
+/* =========================
+   GLOBAL
+========================= */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -5,12 +8,10 @@ body {
   background: #f0f2f5;
 }
 
-#user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
 
+/* =========================
+   HEADER
+========================= */
 .header {
   display: flex;
   align-items: center;
@@ -29,22 +30,22 @@ body {
   gap: 10px;
 }
 
+.avatar img,
+#user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 #username {
   font-weight: 600;
   font-size: 18px;
   color: #0f1419;
 }
 
-.avatar img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
 #spill-button {
-  flex: 1;
   margin-left: 20px;
-  padding: 10px;
+  padding: 10px 16px;
   cursor: pointer;
   background: #1d9bf0;
   border: none;
@@ -59,6 +60,11 @@ body {
   background: #1a8cd8;
   transform: scale(1.02);
 }
+
+
+/* =========================
+   CATEGORIES
+========================= */
 .categories {
   display: flex;
   gap: 10px;
@@ -77,6 +83,7 @@ body {
   font-weight: 500;
   color: #333;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .categories button:hover {
@@ -85,6 +92,9 @@ body {
 }
 
 
+/* =========================
+   FEED
+========================= */
 .feed {
   padding: 20px;
   max-width: 600px;
@@ -104,16 +114,23 @@ body {
   background: #fafafa;
 }
 
-.post-content {
-  margin-bottom: 10px;
-}
-
 .post-header {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  color: #0f1419;
   font-weight: 600;
+  color: #0f1419;
+}
+
+.post-content {
+  margin-bottom: 10px;
+}
+
+.post img,
+.post video {
+  border-radius: 8px;
+  margin-top: 10px;
+  max-width: 100%;
 }
 
 .post-actions {
@@ -123,22 +140,21 @@ body {
   color: #536471;
 }
 
+.post-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
 .post-actions button:hover {
   color: #1d9bf0;
 }
 
-.post img, .post video {
-  border-radius: 8px;
-  margin-top: 10px;
-}
 
-.post-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  color: #3fabd6;
-}
-
+/* =========================
+   MODAL
+========================= */
 .modal {
   display: none;
   position: fixed;
@@ -152,6 +168,10 @@ body {
   align-items: center;
 }
 
+.modal.active {
+  display: flex;
+}
+
 .modal-content {
   background: #ffffff;
   padding: 20px;
@@ -160,6 +180,11 @@ body {
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   animation: fadeIn 0.2s ease;
+}
+
+.modal-content h3 {
+  margin-bottom: 10px;
+  color: #0f1419;
 }
 
 @keyframes fadeIn {
@@ -171,10 +196,6 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-.modal-content h3 {
-  margin-bottom: 10px;
-  color: #0f1419;
 }
 
 #spill-text {
@@ -233,96 +254,4 @@ body {
 
 #close-btn:hover {
   color: #0f1419;
-}
-
-.modal.active {
-  display: flex;
-}
-
-/* FULL SCREEN INTRO */
-#intro-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0f1419;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-/* CENTER CONTENT */
-.intro-content {
-  text-align: center;
-  max-width: 500px;
-  padding: 20px;
-}
-
-/* LOGO INITIAL STATE */
-.intro-logo {
-  width: 110px;
-  margin-bottom: 20px;
-  opacity: 0;
-  transform: scale(0.8);
-  animation: logoEnter 0.6s ease forwards;
-}
-
-/* ANIMATION */
-@keyframes logoEnter {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* TEXT */
-.intro-content h1 {
-  margin-bottom: 15px;
-}
-
-.intro-content p {
-  color: #cfd9de;
-}
-
-#intro-screen.fade-out {
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.warning {
-  font-size: 14px;
-  color: #8899a6;
-}
-
-/* BUTTONS */
-.intro-buttons {
-  margin-top: 20px;
-}
-
-#enter-btn {
-  background: #1d9bf0;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 999px;
-  color: white;
-  cursor: pointer;
-}
-
-#leave-btn {
-  margin-left: 10px;
-  background: transparent;
-  border: 1px solid #444;
-  padding: 10px 18px;
-  border-radius: 999px;
-  color: #ccc;
-  cursor: pointer;
-}
-
-.nav-logo {
-  width: 35px;
-  height: 35px;
-  object-fit: contain;
 }

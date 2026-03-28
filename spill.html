@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spill</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="avatar">
+      <img id="user-avatar" src="images/4.jpg" alt="Avatar">
+      <span id="username"></span>
+    </div>
+    <button id="spill-button">Spill Something</button>
+  </header>
+
+  <div id="spill-modal" class="modal">
+  <div class="modal-content">
+    <h3>What do you want to spill?</h3>
+
+    <textarea id="spill-text" placeholder="Type something..."></textarea>
+
+    <input type="file" id="media-input" accept="image/*,video/*">
+
+    <div class="modal-actions">
+      <button id="post-btn">Post</button>
+      <button id="close-btn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Categories -->
+  <div class="categories">
+    <button>All</button>
+    <button>Funny</button>
+    <button>Sad</button>
+    <button>Anime</button>
+    <button>Rant</button>
+    <button>Advice</button>
+    <button>HighSchool</button>
+    <button>Fashion</button>
+    <button>Pics</button>
+    <button>Videos</button>
+    <button>Drama</button>
+    <button>TeenVibes</button>
+    <button>Adult</button>
+    <button>STEM</button>
+    <button>Music</button>
+    <button>Sports</button>
+    <button>Politics</button>
+    <button>Gaming</button>
+    <button>Memes</button>
+    <button>Tech</button>
+    <button>Weapons</button>
+    <button>Manga</button>
+    <button>News</button>
+    <button>Religion</button>
+    <button>Robots</button>
+    <button>Gambling</button>
+
+    
+  </div>
+
+  <!-- Feed -->
+  <main class="feed" id="feed">
+    <!-- Individual posts will be injected here via JS -->
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

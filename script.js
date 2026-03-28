@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   // =========================
-  // USERNAME SETUP
+  // USERNAME SYSTEM
   // =========================
   const adjectives = ["Silent","Crazy","Happy","Blue","Electric"];
   const nouns = ["Penguin","Tiger","Banana","Rocket","Wizard"];
@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // DOM ELEMENTS
   // =========================
   const feed = document.getElementById("feed");
-
-  const spillBtn = document.getElementById("spill-button");
   const modal = document.getElementById("spill-modal");
+
+  const openBtn = document.getElementById("spill-button");
   const closeBtn = document.getElementById("close-btn");
 
   const postBtn = document.getElementById("post-btn");
@@ -37,114 +37,103 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // =========================
-  // DATA
+  // AVATARS
   // =========================
   const avatars = [
-    'images/1.jpg', 'images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg',
-    'images/6.jpg','images/6.webp', 'images/7.webp','images/8.webp','images/11.jpg',
-    
-    
+    'images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg',
+    'images/5.jpg','images/6.jpg','images/6.webp','images/7.webp',
+    'images/8.webp','images/11.jpg'
   ];
 
-
-  // =========================
-  // FUNCTIONS
-  // =========================
   function randomAvatar() {
     return avatars[Math.floor(Math.random() * avatars.length)];
   }
 
-  function createPost(user, content) {
-    if (!feed) return;
 
+  // =========================
+  // CREATE POST
+  // =========================
+  function createPost(user, text, file) {
     const post = document.createElement("div");
     post.className = "post";
+
+    let mediaHTML = "";
+
+    if (file) {
+      const fileURL = URL.createObjectURL(file);
+
+      if (file.type.startsWith("image")) {
+        mediaHTML = `<img src="${fileURL}" width="100%">`;
+      } else if (file.type.startsWith("video")) {
+        mediaHTML = `<video src="${fileURL}" controls width="100%"></video>`;
+      }
+    }
 
     post.innerHTML = `
       <div class="post-header">
         <img src="${randomAvatar()}" style="width:30px;height:30px;border-radius:50%;margin-right:8px;">
         <strong>${user}</strong>
       </div>
-      <div class="post-content">${content}</div>
+
+      <div class="post-content">
+        <p>${text}</p>
+        ${mediaHTML}
+      </div>
+
       <div class="post-actions">
-      <button>❤️ 4.5K</button>
-      <button>💬 2.4K</button>
-      <button>❌ Unspills in 48hrs</button>
+        <button>❤️ 4.5K</button>
+        <button>💬 2.4K</button>
+        <button>❌ Unspills in 48hrs</button>
       </div>
     `;
 
-    // Show newest at top
     feed.prepend(post);
   }
 
 
   // =========================
-  // MODAL LOGIC
+  // MODAL CONTROL (CLEAN)
   // =========================
-  if (spillBtn && modal) {
-    spillBtn.addEventListener("click", () => {
-      modal.style.display = "block";
-    });
-  }
+  openBtn.addEventListener("click", () => {
+    modal.classList.add("active");
+  });
 
-  if (closeBtn && modal) {
-    closeBtn.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-  }
+  closeBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+  });
 
-  // Optional: click outside to close
   window.addEventListener("click", (e) => {
     if (e.target === modal) {
-      modal.style.display = "none";
+      modal.classList.remove("active");
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      modal.classList.remove("active");
     }
   });
 
 
   // =========================
-  // POST CREATION
+  // POST BUTTON
   // =========================
-  if (postBtn) {
-    postBtn.addEventListener("click", () => {
-      const text = textInput.value.trim();
-      const file = mediaInput.files[0];
+  postBtn.addEventListener("click", () => {
+    const text = textInput.value.trim();
+    const file = mediaInput.files[0];
 
-      let content = "";
+    if (!text && !file) return;
 
-      // Add text
-      if (text) {
-        content += `<p>${text}</p>`;
-      }
+    createPost(username, text, file);
 
-      // Add media
-      if (file) {
-        const fileURL = URL.createObjectURL(file);
+    textInput.value = "";
+    mediaInput.value = "";
+    modal.classList.remove("active");
+  });
 
-        if (file.type.startsWith("image")) {
-          content += `<img src="${fileURL}" width="100%">`;
-        } else if (file.type.startsWith("video")) {
-          content += `
-            <video width="100%" controls>
-              <source src="${fileURL}" type="${file.type}">
-            </video>
-          `;
-        }
-      }
 
-      // Prevent empty post
-      if (!content) return;
-
-      createPost(username, content);
-
-      // Reset inputs
-      textInput.value = "";
-      mediaInput.value = "";
-      modal.style.display = "none";
-    });
-  }
-
-  
-
+  // =========================
+  // DEMO POSTS
   // =========================
   const demoPosts = [
     ["BlueRocket12", "I'm saying Subaru should just forget about sorry ahh emilia and go for rem ❤️❤️💕💕<img src='images/rem.jpeg' width='100%'>"],
@@ -164,105 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ["ElectricWizard77", "OOGAH BOOGAH"]
   ];
 
-  demoPosts.forEach(post => createPost(post[0], post[1]));
+  demoPosts.forEach(p => createPost(p[0], p[1], null));
 
-});
-
-const modal = document.getElementById("spill-modal");
-const openBtn = document.getElementById("spill-button");
-const closeBtn = document.getElementById("close-btn");
-
-openBtn.addEventListener("click", () => {
-  modal.classList.add("active");
-});
-
-closeBtn.addEventListener("click", () => {
-  modal.classList.remove("active");
-});
-
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    modal.classList.remove("active");
-  }
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    modal.classList.remove("active");
-  }
-});
-
-const postBtn = document.getElementById("post-btn");
-const textInput = document.getElementById("spill-text");
-const mediaInput = document.getElementById("media-input");
-const feed = document.getElementById("feed");
-
-postBtn.addEventListener("click", () => {
-  const text = textInput.value.trim();
-  const file = mediaInput.files[0];
-
-  // prevent empty post
-  if (!text && !file) return;
-
-  createPost(text, file);
-
-  // reset inputs
-  textInput.value = "";
-  mediaInput.value = "";
-
-  // close modal
-  modal.classList.remove("active");
-});
-
-function createPost(text, file) {
-  const post = document.createElement("div");
-  post.classList.add("post");
-
-  let mediaHTML = "";
-
-  if (file) {
-    const fileURL = URL.createObjectURL(file);
-
-    if (file.type.startsWith("image")) {
-      mediaHTML = `<img src="${fileURL}" width="100%">`;
-    } else if (file.type.startsWith("video")) {
-      mediaHTML = `<video src="${fileURL}" controls width="100%"></video>`;
-    }
-  }
-
-  post.innerHTML = `
-    <div class="post-header">
-      <strong>${username.textContent || "User"}</strong>
-    </div>
-
-    <div class="post-content">
-      <p>${text}</p>
-      ${mediaHTML}
-    </div>
-
-    <div class="post-actions">
-      <button>❤️ 4.5K</button>
-      <button>💬 2.4K</button>
-      <button>❌ Unspills in 48hrs</button>
-    </div>
-  `;
-
-  // add new post to top
-  feed.prepend(post);
-}
-
-const username = document.getElementById("username");
-username.textContent = "CobbahTech"; // or dynamic later
-
-const intro = document.getElementById("intro-screen");
-const enterBtn = document.getElementById("enter-btn");
-const leaveBtn = document.getElementById("leave-btn");
-
-// ENTER → open app
-enterBtn.addEventListener("click", () => {
-  intro.classList.add("fade-out");
-
-  setTimeout(() => {
-    intro.style.display = "none";
-  }, 400);
 });

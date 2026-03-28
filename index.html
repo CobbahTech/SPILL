@@ -4,97 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spill</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="intro.css">
 </head>
 <body>
   <div id="intro-screen">
-  <div class="intro-content">
+    <div class="intro-content">
+      <!-- Logo -->
+      <img src="images/spill-logo.jpeg" alt="Spill Logo" class="logo">
 
-    <!-- LOGO -->
-    <img src="images/logo.jpeg" alt="Spill Logo" class="intro-logo">
+      <!-- Main heading -->
+      <h1>Spill</h1>
+      
+      <!-- Description -->
+      <p>
+        Spill is a safe, anonymous space where you can say what you can’t say anywhere else.<br>
+        No names. No faces. Just your truth.
+      </p>
 
-    <!-- TEXT -->
-    <h1>Spill</h1>
-    
-    <p>
-      Spill is a safe, anonymous space where you can say what you can’t say anywhere else.<br>
-      No names. No faces. Just spills.
-    </p>
+      <p class="warning">
+        But remember, freedom comes with responsibility.<br>
+        Think before you spill.
+      </p>
 
-    <p class="warning">
-      But remember, freedom comes with responsibility.<br>
-      Think before you spill.
-    </p>
-
-    <!-- BUTTONS -->
-    <div class="intro-buttons">
-      <button id="enter-btn">Enter the Room</button>
-      <button id="leave-btn">Leave</button>
-    </div>
-
-  </div>
-</div>
-  <!-- Header -->
-  <header class="header">
-  <div class="avatar">
-  <img src="images/logo.jpeg" class="nav-logo" alt="Logo">
-  <span id="username"></span>
-</div>
-    <button id="spill-button">Spill Something</button>
-  </header>
-
-  <div id="spill-modal" class="modal">
-  <div class="modal-content">
-    <h3>What do you want to spill?</h3>
-
-    <textarea id="spill-text" placeholder="Type something..."></textarea>
-
-    <input type="file" id="media-input" accept="image/*,video/*">
-
-    <div class="modal-actions">
-      <button id="post-btn">Post</button>
-      <button id="close-btn">Cancel</button>
+      <!-- Buttons -->
+      <div class="intro-buttons">
+        <button id="enter-btn">Enter the Room</button>
+        <button id="leave-btn">Leave</button>
+      </div>
     </div>
   </div>
-</div>
 
-  <!-- Categories -->
-  <div class="categories">
-    <button>All</button>
-    <button>Funny</button>
-    <button>Sad</button>
-    <button>Anime</button>
-    <button>Rant</button>
-    <button>Advice</button>
-    <button>HighSchool</button>
-    <button>Fashion</button>
-    <button>Pics</button>
-    <button>Videos</button>
-    <button>Drama</button>
-    <button>TeenVibes</button>
-    <button>Adult</button>
-    <button>STEM</button>
-    <button>Music</button>
-    <button>Sports</button>
-    <button>Politics</button>
-    <button>Gaming</button>
-    <button>Memes</button>
-    <button>Tech</button>
-    <button>Weapons</button>
-    <button>Manga</button>
-    <button>News</button>
-    <button>Religion</button>
-    <button>Robots</button>
-    <button>Gambling</button>
-
-    
-  </div>
-
-  <!-- Feed -->
-  <main class="feed" id="feed">
-    <!-- Individual posts will be injected here via JS -->
-  </main>
-
-  <script src="script.js"></script>
+  <script src="intro.js"></script>
 </body>
 </html>
