@@ -8,6 +8,12 @@ body {
   color: #ffffff;
 }
 
+/* Prevent body scrolling on intro */
+body.intro-active {
+  overflow: hidden;
+  height: 100vh;
+}
+
 #intro-screen {
   position: fixed;
   top: 0;
