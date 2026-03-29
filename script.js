@@ -3,24 +3,45 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
   // USERNAME SYSTEM
   // =========================
-  const adjectives = ["Silent","Crazy","Happy","Blue","Electric"];
-  const nouns = ["Penguin","Tiger","Banana","Rocket","Wizard"];
+ // =========================
+// RANDOM AVATAR + USERNAME SETUP
+// =========================
+const avatars = [
+  'images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg',
+  'images/5.jpg','images/6.jpg','images/6.webp','images/7.webp',
+  'images/8.webp','images/11.jpg'
+];
 
-  let username = localStorage.getItem("spillUsername");
+const adjectives = ["Silent","Crazy","Happy","Blue","Electric"];
+const nouns = ["Penguin","Tiger","Banana","Rocket","Wizard"];
 
-  if (!username) {
-    const randomNumber = Math.floor(Math.random() * 100);
-    username =
-      adjectives[Math.floor(Math.random() * adjectives.length)] +
-      nouns[Math.floor(Math.random() * nouns.length)] +
-      randomNumber;
+// Get or generate username
+let username = localStorage.getItem("spillUsername");
+if (!username) {
+  const randomNumber = Math.floor(Math.random() * 100);
+  username =
+    adjectives[Math.floor(Math.random() * adjectives.length)] +
+    nouns[Math.floor(Math.random() * nouns.length)] +
+    randomNumber;
 
-    localStorage.setItem("spillUsername", username);
+  localStorage.setItem("spillUsername", username);
+}
+
+// Set username in header
+const usernameElem = document.getElementById("username");
+if (usernameElem) usernameElem.textContent = username;
+
+// Pick random avatar for this user
+const avatarElem = document.getElementById("user-avatar");
+if (avatarElem) {
+  // Optionally, store in localStorage so avatar persists per user
+  let userAvatar = localStorage.getItem("spillAvatar");
+  if (!userAvatar) {
+    userAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+    localStorage.setItem("spillAvatar", userAvatar);
   }
-
-  const usernameElem = document.getElementById("username");
-  if (usernameElem) usernameElem.textContent = username;
-
+  avatarElem.src = userAvatar;
+}
 
   // =========================
   // DOM ELEMENTS
@@ -39,12 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
   // AVATARS
   // =========================
-  const avatars = [
-    'images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg',
-    'images/5.jpg','images/6.jpg','images/6.webp','images/7.webp',
-    'images/8.webp','images/11.jpg'
-  ];
-
   function randomAvatar() {
     return avatars[Math.floor(Math.random() * avatars.length)];
   }
