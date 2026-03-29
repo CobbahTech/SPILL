@@ -6,6 +6,7 @@
   <title>Spill - Donate</title>
   <link rel="stylesheet" href="intro.css">
 </head>
+
 <body class="intro-active">
 
   <div id="intro-screen">
@@ -21,18 +22,46 @@
       <p>
         Thank you for helping support the <strong>Spill</strong> community!<br><br>
         Your contributions help us maintain and improve the site.<br><br>
-        Choose a method below to make a donation.
+        Click below to donate using Mobile Money.
       </p>
 
       <!-- Buttons -->
       <div class="intro-buttons">
-        <!-- You can link these to your payment gateway or MoMo integration -->
-        <button id="enter-btn" onclick="alert('Redirect to payment gateway')">Donate Now</button>
+        <button id="donate-btn">Donate ₵1</button>
         <button id="leave-btn" onclick="window.location.href='spill.html'">← Back</button>
       </div>
 
     </div>
   </div>
+
+  <!-- Paystack Script -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+
+  <!-- Donation Script -->
+  <script>
+    const donateBtn = document.getElementById("donate-btn");
+
+    donateBtn.addEventListener("click", () => {
+
+      let handler = PaystackPop.setup({
+        key: "pk_test_545538f0a73ef3bc85343502fac60608e1743edb", // YOUR PUBLIC KEY
+        email: "test@email.com", // replace later with real user email
+        amount: 100, // ₵1 in pesewas
+        currency: "GHS",
+        channels: ['mobile_money'], // MoMo only
+
+        callback: function(response) {
+          alert("✅ Donation successful! Ref: " + response.reference);
+        },
+
+        onClose: function() {
+          alert("❌ Payment cancelled");
+        }
+      });
+
+      handler.openIframe();
+    });
+  </script>
 
 </body>
 </html>
