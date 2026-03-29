@@ -8,28 +8,29 @@
 </head>
 <body>
   <!-- Header -->
-<header class="header">
-  <div class="avatar">
-    <img id="user-avatar" src="" alt="Avatar">
-    <span id="username"></span>
-  </div>
-  <button id="spill-button">Spill Something</button>
-</header>
+  <header class="header">
+    <div class="avatar">
+      <img id="user-avatar" src="" alt="Avatar">
+      <span id="username"></span>
+    </div>
+    <button id="spill-button">Spill Something</button>
+  </header>
 
+  <!-- Spill Modal -->
   <div id="spill-modal" class="modal">
-  <div class="modal-content">
-    <h3>What do you want to spill?</h3>
+    <div class="modal-content">
+      <h3>What do you want to spill?</h3>
 
-    <textarea id="spill-text" placeholder="Type something..."></textarea>
+      <textarea id="spill-text" placeholder="Type something..."></textarea>
 
-    <input type="file" id="media-input" accept="image/*,video/*">
+      <input type="file" id="media-input" accept="image/*,video/*">
 
-    <div class="modal-actions">
-      <button id="post-btn">Post</button>
-      <button id="close-btn">Cancel</button>
+      <div class="modal-actions">
+        <button id="post-btn">Post</button>
+        <button id="close-btn">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- Categories -->
   <div class="categories">
@@ -47,13 +48,53 @@
     <button id="memes-btn" onclick="window.location.href='memes.html'">Memes</button>
     <button id="weapons-btn" onclick="window.location.href='weapons.html'">Weapons</button>
     <button id="religion-btn" onclick="window.location.href='religion.html'">Religion</button>
-    
   </div>
 
   <!-- Feed -->
   <main class="feed" id="feed">
     <!-- Individual posts will be injected here via JS -->
   </main>
+
+  <!-- Random Username + Avatar Script -->
+  <script>
+    // AVATAR SETUP
+    const avatars = [
+      'images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg',
+      'images/5.jpg','images/6.jpg','images/6.webp','images/7.webp',
+      'images/8.webp','images/11.jpg'
+    ];
+
+    // USERNAME SETUP
+    const adjectives = ["Silent","Crazy","Happy","Blue","Electric"];
+    const nouns = ["Penguin","Tiger","Banana","Rocket","Wizard"];
+
+    // Get or generate username
+    let username = localStorage.getItem("spillUsername");
+    if (!username) {
+      const randomNumber = Math.floor(Math.random() * 100);
+      username =
+        adjectives[Math.floor(Math.random() * adjectives.length)] +
+        nouns[Math.floor(Math.random() * nouns.length)] +
+        randomNumber;
+
+      localStorage.setItem("spillUsername", username);
+    }
+
+    // Display username in header
+    const usernameElem = document.getElementById("username");
+    if (usernameElem) usernameElem.textContent = username;
+
+    // Get or generate avatar
+    const avatarElem = document.getElementById("user-avatar");
+    if (avatarElem) {
+      let userAvatar = localStorage.getItem("spillAvatar");
+      if (!userAvatar) {
+        userAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+        localStorage.setItem("spillAvatar", userAvatar);
+      }
+      avatarElem.src = userAvatar;
+    }
+  </script>
 
   <script src="script.js"></script>
 </body>

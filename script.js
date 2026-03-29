@@ -1,47 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   // =========================
-  // USERNAME SYSTEM
+  // RANDOM AVATAR + USERNAME SETUP
   // =========================
- // =========================
-// RANDOM AVATAR + USERNAME SETUP
-// =========================
-const avatars = [
-  'images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg',
-  'images/5.jpg','images/6.jpg','images/6.webp','images/7.webp',
-  'images/8.webp','images/11.jpg'
-];
+  const avatars = [
+    'images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg',
+    'images/5.jpg','images/6.jpg','images/6.webp','images/7.webp',
+    'images/8.webp','images/11.jpg'
+  ];
 
-const adjectives = ["Silent","Crazy","Happy","Blue","Electric"];
-const nouns = ["Penguin","Tiger","Banana","Rocket","Wizard"];
+  const adjectives = ["Silent","Crazy","Happy","Blue","Electric"];
+  const nouns = ["Penguin","Tiger","Banana","Rocket","Wizard"];
 
-// Get or generate username
-let username = localStorage.getItem("spillUsername");
-if (!username) {
-  const randomNumber = Math.floor(Math.random() * 100);
-  username =
-    adjectives[Math.floor(Math.random() * adjectives.length)] +
-    nouns[Math.floor(Math.random() * nouns.length)] +
-    randomNumber;
+  // Get or generate username
+  let username = localStorage.getItem("spillUsername");
+  if (!username) {
+    const randomNumber = Math.floor(Math.random() * 100);
+    username =
+      adjectives[Math.floor(Math.random() * adjectives.length)] +
+      nouns[Math.floor(Math.random() * nouns.length)] +
+      randomNumber;
 
-  localStorage.setItem("spillUsername", username);
-}
-
-// Set username in header
-const usernameElem = document.getElementById("username");
-if (usernameElem) usernameElem.textContent = username;
-
-// Pick random avatar for this user
-const avatarElem = document.getElementById("user-avatar");
-if (avatarElem) {
-  // Optionally, store in localStorage so avatar persists per user
-  let userAvatar = localStorage.getItem("spillAvatar");
-  if (!userAvatar) {
-    userAvatar = avatars[Math.floor(Math.random() * avatars.length)];
-    localStorage.setItem("spillAvatar", userAvatar);
+    localStorage.setItem("spillUsername", username);
   }
-  avatarElem.src = userAvatar;
-}
+
+  // Set username in header
+  const usernameElem = document.getElementById("username");
+  if (usernameElem) usernameElem.textContent = username;
+
+  // Pick random avatar for this user
+  const avatarElem = document.getElementById("user-avatar");
+  if (avatarElem) {
+    let userAvatar = localStorage.getItem("spillAvatar");
+    if (!userAvatar) {
+      userAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+      localStorage.setItem("spillAvatar", userAvatar);
+    }
+    avatarElem.src = userAvatar;
+  }
 
   // =========================
   // DOM ELEMENTS
@@ -56,19 +52,17 @@ if (avatarElem) {
   const textInput = document.getElementById("spill-text");
   const mediaInput = document.getElementById("media-input");
 
-
   // =========================
-  // AVATARS
+  // AVATAR HELPER
   // =========================
   function randomAvatar() {
     return avatars[Math.floor(Math.random() * avatars.length)];
   }
 
-
   // =========================
-  // CREATE POST
+  // CREATE POST FUNCTION
   // =========================
-  function createPost(user, text, file) {
+  function createPost(user, text, file, useHeaderAvatar = true) {
     const post = document.createElement("div");
     post.className = "post";
 
@@ -84,9 +78,15 @@ if (avatarElem) {
       }
     }
 
+    // Determine avatar: real posts use header avatar, demo posts use random
+    let avatarSrc = randomAvatar();
+    if (useHeaderAvatar) {
+      avatarSrc = localStorage.getItem("spillAvatar");
+    }
+
     post.innerHTML = `
       <div class="post-header">
-        <img src="${randomAvatar()}" style="width:30px;height:30px;border-radius:50%;margin-right:8px;">
+        <img src="${avatarSrc}" style="width:30px;height:30px;border-radius:50%;margin-right:8px;">
         <strong>${user}</strong>
       </div>
 
@@ -105,9 +105,8 @@ if (avatarElem) {
     feed.prepend(post);
   }
 
-
   // =========================
-  // MODAL CONTROL (CLEAN)
+  // MODAL CONTROL
   // =========================
   openBtn.addEventListener("click", () => {
     modal.classList.add("active");
@@ -129,7 +128,6 @@ if (avatarElem) {
     }
   });
 
-
   // =========================
   // POST BUTTON
   // =========================
@@ -139,16 +137,15 @@ if (avatarElem) {
 
     if (!text && !file) return;
 
-    createPost(username, text, file);
+    createPost(username, text, file, true);
 
     textInput.value = "";
     mediaInput.value = "";
     modal.classList.remove("active");
   });
 
-
   // =========================
-  // DEMO POSTS
+  // DEMO POSTS (UNCHANGED)
   // =========================
   const demoPosts = [
     ["BlueRocket12", "I'm saying Subaru should just forget about sorry ahh emilia and go for rem ❤️❤️💕💕<img src='images/rem.jpeg' width='100%'>"],
@@ -168,6 +165,6 @@ if (avatarElem) {
     ["ElectricWizard77", "OOGAH BOOGAH"]
   ];
 
-  demoPosts.forEach(p => createPost(p[0], p[1], null));
+  demoPosts.forEach(p => createPost(p[0], p[1], null, false));
 
 });
