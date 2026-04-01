@@ -21,14 +21,14 @@
       <!-- Message -->
       <p>
         Thank you for helping support the <strong>Spill</strong> community!<br><br>
-        Your contributions help us maintain and improve the site.<br><br>
-        Click below to donate using Mobile Money.
+        Your contributions help us keep the platform running and improve it for everyone.<br><br>
+        All donations are processed securely via Mobile Money.
       </p>
 
       <!-- Buttons -->
       <div class="intro-buttons">
-        <button id="donate-btn">Donate ₵1</button>
-        <button id="leave-btn" onclick="window.location.href='spill.html'">← Back</button>
+        <button id="donate-btn">Donate with Mobile Money</button>
+        <button id="leave-btn">← Back to Spill</button>
       </div>
 
     </div>
@@ -40,22 +40,48 @@
   <!-- Donation Script -->
   <script>
     const donateBtn = document.getElementById("donate-btn");
+    const leaveBtn = document.getElementById("leave-btn");
 
+    // Back button
+    leaveBtn.addEventListener("click", () => {
+      window.location.href = "spill.html";
+    });
+
+    // Donate button with dynamic amount + username@spill.com
     donateBtn.addEventListener("click", () => {
+      
+      // Get username from localStorage
+      let username = localStorage.getItem("spillUsername") || "anonymous";
+      let userEmail = `${username.toLowerCase()}@spill.com`;
 
+      // Ask user for donation amount (minimum ₵1)
+      let amountGHS = prompt("How much would you like to donate?\nMinimum: ₵1", "5");
+
+      // Validate input
+      amountGHS = parseFloat(amountGHS);
+      
+      if (!amountGHS || amountGHS < 1) {
+        alert("❌ Minimum donation amount is ₵1. Please try again.");
+        return;
+      }
+
+      // Convert to pesewas (Paystack requirement)
+      const amountInPesewas = Math.round(amountGHS * 100);
+
+      // Paystack setup
       let handler = PaystackPop.setup({
-        key: "pk_test_545538f0a73ef3bc85343502fac60608e1743edb", // YOUR PUBLIC KEY
-        email: "test@email.com", // replace later with real user email
-        amount: 100, // ₵1 in pesewas
+        key: "pk_test_545538f0a73ef3bc85343502fac60608e1743edb",   // ← CHANGE TO LIVE KEY WHEN READY
+        email: userEmail,
+        amount: amountInPesewas,
         currency: "GHS",
-        channels: ['mobile_money'], // MoMo only
+        channels: ['mobile_money'],   // Only Mobile Money
 
         callback: function(response) {
-          alert("✅ Donation successful! Ref: " + response.reference);
+          alert(`✅ Thank you!\n\nDonation of ₵${amountGHS} was successful!\nReference: ${response.reference}`);
         },
 
         onClose: function() {
-          alert("❌ Payment cancelled");
+          alert("❌ Payment was cancelled.");
         }
       });
 

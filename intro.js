@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       intro.classList.add("fade-out");
       setTimeout(() => {
         document.body.classList.remove("intro-active");
-        window.location.href = "https://google.com";
+        window.location.href = "window.close()";
       }, 500);
     });
   }
